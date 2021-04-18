@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Assemblies\</OutputPath>
+    <DefineConstants></DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Assemblies\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFRAMEWORK;NET472</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <DebugSymbols>true</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- This package includes all Unity packages as well as Assembly-CSharp
+         Update this either in the GUI (nuget system) or from the command line:
+         nuget restore
+         -->
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.2.2900" />
+    <!--<PackageReference Include="Lib.Harmony" Version="2.0.4" />-->
+    <!-- >:( this copies 0Harmony.dll to the Assemblies directory no matter
+         what I do. I am not happy about it but cannot find a workaround -->
+    <PackageReference Include="Lib.Harmony" Version="2.0.4" CopyLocal="False">
+      <CopyLocal>False</CopyLocal>
+      <Private>False</Private>
+      <CopyNuGetImplementations>false</CopyNuGetImplementations>
+      <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    </PackageReference>
+
+    <!-- I want to be able to do this: (it should prevent the copy?)
+    <PackageReference Include="Lib.Harmony" Version="2.0.4" ExcludeAssets="all" GeneratePathProperty="true"/>
+    <Reference Include="$(PkgLib_Harmony)\lib\net472\0Harmony.dll">
+      <Private>False</Private>
+    </Reference>
+    but I guess the Linux msbuild engine can't GeneratePathProperty yet? :(
+    -->
+
+  </ItemGroup>
+
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Deployment.LinuxDeployData generatePcFile="False" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+
+</Project>
