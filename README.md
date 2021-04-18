@@ -24,3 +24,5 @@ LWM's Fuel Filter allows you to choose which possible fuels will actually get us
 As a bonus, I patch anything that burns "WoodLog" (that is, wood) to burn "Woody" things (only helps if you have mods that add woody things, such as Lulu's bone mod, or some of the expanded biome mods...but unless you have a mod like that, you probably don't need this anyway!)  So the Blast Furnace from Project RimFactory can burn the sequoia wood from expanded biomes.  If a similar patch is needed for metals, I can do that too.
 
 Enjoy, --LWM
+
+Available on Steam at https://steamcommunity.com/sharedfiles/filedetails/?id=2461634904
