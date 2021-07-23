@@ -5,16 +5,19 @@
     <TargetFramework>net472</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <LangVersion>default</LangVersion>
+    <OutputPath>..\1.3\Assemblies\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Assemblies\</OutputPath>
     <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>false</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
@@ -22,11 +25,9 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Assemblies\</OutputPath>
     <DefineConstants>TRACE;DEBUG;NETFRAMEWORK;NET472</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <DebugSymbols>true</DebugSymbols>
-    <Prefer32Bit>false</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
@@ -34,26 +35,10 @@
     <!-- This package includes all Unity packages as well as Assembly-CSharp
          Update this either in the GUI (nuget system) or from the command line:
          nuget restore
+         nuget update
          -->
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.2.2900" />
-    <!--<PackageReference Include="Lib.Harmony" Version="2.0.4" />-->
-    <!-- >:( this copies 0Harmony.dll to the Assemblies directory no matter
-         what I do. I am not happy about it but cannot find a workaround -->
-    <PackageReference Include="Lib.Harmony" Version="2.0.4" CopyLocal="False">
-      <CopyLocal>False</CopyLocal>
-      <Private>False</Private>
-      <CopyNuGetImplementations>false</CopyNuGetImplementations>
-      <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
-    </PackageReference>
-
-    <!-- I want to be able to do this: (it should prevent the copy?)
-    <PackageReference Include="Lib.Harmony" Version="2.0.4" ExcludeAssets="all" GeneratePathProperty="true"/>
-    <Reference Include="$(PkgLib_Harmony)\lib\net472\0Harmony.dll">
-      <Private>False</Private>
-    </Reference>
-    but I guess the Linux msbuild engine can't GeneratePathProperty yet? :(
-    -->
-
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.3.3067" />
+    <PackageReference Include="Lib.Harmony" Version="2.1.0" ExcludeAssets="runtime"/>
   </ItemGroup>
 
   <ProjectExtensions>

@@ -52,7 +52,7 @@ namespace LWM.FuelFilter
 
             if (filter != null && parentFilter != null) {
                 Rect rect2 = new Rect(0f, 20f, position.width, position.height - 20f);
-                ThingFilterUI.DoThingFilterConfigWindow(rect2, ref this.scrollPosition, filter,
+                ThingFilterUI.DoThingFilterConfigWindow(rect2, this.thingFilterState, filter,
                                   parentFilter, 8, null, null, false, null, null);
             } else {
                 Log.Warning("FuelFilter - had null filter??"); // sanity check
@@ -63,6 +63,6 @@ namespace LWM.FuelFilter
 
 
         private static readonly Vector2 WinSize = new Vector2(300f, 480f);
-        private Vector2 scrollPosition=new Vector2(0,0);
+        private ThingFilterUI.UIState thingFilterState = new ThingFilterUI.UIState();
     }
 }
